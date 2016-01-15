@@ -39,12 +39,17 @@
         </form>
       </td>
       <td>
-        <form class="form-inline">
+        <form name="sform" class="form-inline">
           <input class="form-control" type="text" placeholder="Rechercher">
+          <%= text_field_tag("query", params['query'], :size => 10 ) %>
           <button class="btn btn-default" type="submit">OK</button>
         </form>
       </td>
     </tr>
+  </tbody>
+</table>
+<table class="table">
+  <tbody>
     <% @produits.each do |produit| %>
       <tr>
         <td><%= image_tag(produit.image_path) %></td>
