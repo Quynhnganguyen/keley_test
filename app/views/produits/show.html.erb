@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
+<h2><%= @produit.nom %></h2>
+<table class="table">
+  <tbody>
+      <tr>
+        <td><%= image_tag(@produit.image_path) %></td>
+        <td>
+          <div class="show_left">
+            Description:
+            <%= @produit.description %>
+            <br>
+          </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @produit.description %>
-</p>
+          <div class="show_left">
+            Poids: <%= @produit.poids %> kg
+            <br>
+            Prix TTC: <%= @produit.prix %> euros
+            <br>
+          </div>
 
-<p>
-  <strong>Prix:</strong>
-  <%= @produit.prix %>
-</p>
-
-<p>
-  <strong>Poids:</strong>
-  <%= @produit.poids %>
-</p>
-
-<p>
-  <strong>Tag:</strong>
-  <%= @produit.tag %>
-</p>
-
-<p>
-  <strong>Image path:</strong>
-  <%= @produit.image_path %>
-</p>
+          <div class="show_left">
+            Catégories attachées:
+            <% @produit.tags.each do |tag| %>
+              Catégorie <%= tag.niveau %>, 
+            <% end %>
+          </div>
+        </td>
+      </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_produit_path(@produit) %> |
 <%= link_to 'Back', produits_path %>

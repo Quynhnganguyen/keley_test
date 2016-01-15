@@ -3,46 +3,58 @@
 <table class="table">
   <tbody>
     <tr>
-      <form>
-        <td>
-          <div class="left">
-            <label for="filtrer">Filtrer:</label>
-            <% @tags.each do |tag| %>
+      <td>
+        <form>
+          <div>
+            <div class="form-group" id="left">
+              <label for="filtrer">Filtrer:</label>
+              <% @tags.each do |tag| %>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                     Tag <%= tag.niveau %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+            <div class="form-group" id="right">
+              <label for="tri">Tri par:</label>
               <div class="radio">
                 <label>
                   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                   Tag <%= tag.niveau %>
+                   Prix
                 </label>
               </div>
-            <% end %>
-          </div>
-          <div class="right">
-            <label for="tri">Tri par:</label>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                 Prix
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                 Poids
-              </label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                   Poids
+                </label>
+              </div>
             </div>
           </div>
-        </td>
-      </form>
-      <form>
-        <td>
+          <div>
+            <button class="btn btn-default" type="submit">GO</button>
+          </div>
+        </form>
+      </td>
+      <td>
+        <form class="form-inline">
           <input class="form-control" type="text" placeholder="Rechercher">
-        </td>
-      </form>
+          <button class="btn btn-default" type="submit">OK</button>
+        </form>
+      </td>
     </tr>
     <% @produits.each do |produit| %>
       <tr>
         <td><%= image_tag(produit.image_path) %></td>
-        <td><%= produit.description %></td>
+        <td>
+          <%= produit.description %>
+          <br>
+          <% produit.tags.each do |tag| %>
+            Tag <%= tag.niveau %>
+          <% end %>
+        </td>
         <td>
           <%= produit.prix %> euros
         </td>
