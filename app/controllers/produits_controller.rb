@@ -13,26 +13,6 @@ class ProduitsController < ApplicationController
   def show
   end
 
-  def list
-    produits_per_page = 10
-
-    query = "SELECT * FROM produits"
-    query_count = "SELECT COUNT(*) FROM produits"
-
-    unless params[:query].nil?
-      query_add = " AND (produits.description LIKE ‘%#{params[:query]}%’ OR produits.prix LIKE ‘%#{params[:query]}%’ OR produits.poids LIKE ‘%#{params[:query]}%’)"
-      query = query + query_add
-      query_count = query_count + query_add
-    end
-
-    @total = Produit.count_by_sql( query_count )
-    @produits_pages, @produits = paginate_by_sql Produit, query, produits_per_page
-
-    if request.xml_http_request?
-      render :partial => "produits_list", :layout => false
-    end
-  end
-
   # GET /produits/new
   def new
     @produit = Produit.new
