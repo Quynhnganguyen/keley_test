@@ -54,3 +54,17 @@ textarea {
 .show_left{
   padding-top: 20px;
 }
+
+.big_image img{
+  height: auto; 
+  width: auto; 
+  max-width: 1300px; 
+  max-height: 300px;
+}
+
+.small_image img{
+  height: auto; 
+  width: auto; 
+  max-width: 50px; 
+  max-height: 50px;
+}
