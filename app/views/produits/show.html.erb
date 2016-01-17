@@ -3,7 +3,16 @@
 <table class="table">
   <tbody>
       <tr>
-        <td><%= image_tag(@produit.image_path) %></td>
+        <td>
+          <div class="big_image">
+            <%= image_tag(@produit.images.first.image_url) %>
+          </div>
+          <div class="small_image">
+            <% @produit.images[1..-1].each do |img| %>
+              <%= image_tag(img.image_url) %>
+            <%end%>
+          </div>
+        </td>
         <td>
           <div class="show_left">
             Description:

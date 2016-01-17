@@ -47,7 +47,7 @@
   <tbody>
     <% @produits.each do |produit| %>
       <tr>
-        <td><%= image_tag(produit.image_path) %></td>
+        <td><%= image_tag(produit.images.first.image_url) %></td>
         <td>
           <%= produit.description %>
           <br>

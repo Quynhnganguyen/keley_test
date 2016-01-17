@@ -1,5 +1,6 @@
 class ProduitsController < ApplicationController
   before_action :set_produit, only: [:show, :edit, :update, :destroy]
+  before_action :set_big_image, only: [:show]
 
   # GET /produits
   # GET /produits.json
@@ -66,6 +67,10 @@ class ProduitsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_produit
       @produit = Produit.find(params[:id])
+    end
+
+    def set_big_image
+      @image = Image.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
